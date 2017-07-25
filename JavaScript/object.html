@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <head>
+        <meta charset = "utf-8"/>
+    </head>
+    <body>
+        <script type = "text/javascript">
+        
+            var grades = {}; // or grades = {'park' : 100, 'yeoung' = 99}; or new Object();
+            grades['park'] = 100;
+            grades['yeoung'] = 99;
+
+            document.write('yeoung : ' + grades.yeoung + '<br />');
+
+            for(key in grades)
+            {
+                document.write('for_key : ' + key + ' grade : ' + grades[key] + '<br />');
+            }
+
+            // 반점 유의
+            var obj = {
+                'list' : {'park yeoung jun' : 100 , 'yeoung jun' : 100},
+                
+                'show' : function(){
+                        for(var key in this.list)
+                        {
+                            document.write('name : ' + key + ' grade : ' + this.list[key] + '<br />');
+                        }
+                } 
+            };
+
+            obj.show();
+
+        </script>
+    </body>
+</head>
