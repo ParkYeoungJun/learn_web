@@ -8,6 +8,7 @@ var input = 'password';
 
 console.log("input : " + input);
 
+
 var cipher = crypto.createCipher('aes192', key);
 cipher.update(input, 'utf8', 'base64');
 var cip_output = cipher.final('base64');
