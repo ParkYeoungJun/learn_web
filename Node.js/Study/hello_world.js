@@ -4,7 +4,8 @@ var server = http.createServer(responseSetting);
 
 function responseSetting(request, response){
     response.writeHead(200, {"Content-type":"text/plain"});
-    response.write("Hello World");
+    response.write("Hello World\n");
+    response.write("Hi");
     response.end();
 }
 
