@@ -6,7 +6,7 @@ function add(a, b)
 var json = {
     id : 'abc',
     pw : '123'
-}
+};
 
 module.exports = add;
 module.exports.json = json;
