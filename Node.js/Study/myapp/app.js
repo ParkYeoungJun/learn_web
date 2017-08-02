@@ -22,9 +22,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*
  *  custom
  */
-app.get('/myurl', function(req, res){
-  res.send('hi');
+
+ app.get('/myurl', function(req, res){
+  res.send('<b>hi</b>');
 });
+
 /*
  *
  */
