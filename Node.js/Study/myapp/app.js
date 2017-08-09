@@ -7,12 +7,13 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-
 var session  = require('express-session');
 var flash    = require('connect-flash');
 
 var cons = require('consolidate');
+
 app.engine('html', cons.swig);
+app.engine('ejs', cons.ejs);
 app.set('views', path.join(__dirname, 'views/'));
 app.set('view engine', 'html');
 
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(flash());
 app.use(session({
-  secret: 'afsdfiuhaiufheui123uh1i2hiuhqwd',
+  secret: 'afsdfiuhaiufheui132',
   resave: false,
   saveUninitialized: true
 }));
@@ -117,7 +118,6 @@ function oneTicket (){
      newArray.sort( function(a, b){
         return a - b;
      });
-  
 
      return newArray.join(" ");
   }
