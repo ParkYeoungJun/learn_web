@@ -8,9 +8,11 @@ const ip = '127.0.0.1';
 const port = 1337;
 const bodyParser = require('body-parser');
 
+
 app.locals.pretty = true;
-app.set('view engine', 'jade');
+
 app.set('views', './views');
+app.set('view engine', 'jade');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended : false})); // 이 앱을 통하는 모든 정보는 bodyparser을 통해 들어옴
@@ -32,7 +34,6 @@ app.post('/form_receiver', function(req, res){
   var description = req.body.description;
 
   res.send(title + ', ' + description);
-
 });
 
 app.listen(port, ip, function(){
