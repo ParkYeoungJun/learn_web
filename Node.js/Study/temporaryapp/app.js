@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+var favicon = require('serve-favicon');   // 웹 탭에 나오는 이미지
+var logger = require('morgan');           // 로그에 나오는 색 등 스타일링
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -24,7 +24,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
   console.log('미들웨어 실행');
-  next();
+  next({type: 'value', key: 'output'});
+});
+
+app.use(function(value, req, res, next){
+  console.log('return value : '+ value.key);
 });
 
 app.use('/', index);
