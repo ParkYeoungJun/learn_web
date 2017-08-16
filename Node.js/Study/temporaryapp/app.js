@@ -8,6 +8,24 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+    host    :'localhost',
+    port : 3307,
+    user : 'root',
+    password : 'subin931',
+    database:'nodejs_study'
+});
+
+connection.connect(function(err) {
+    if (err) {
+        console.error('mysql connection error');
+        console.error(err);
+        throw err;
+    }
+});
+
 var app = express();
 
 // view engine setup
@@ -37,6 +55,15 @@ app.use('/users', users);
 // app.use(function(req, res){
 //   console.log('미들웨어 실행');
 // });
+
+
+app.get('/sql', function(req,res){
+    var query = connection.query('select * from test',function(err, result){
+        console.log(rows);
+        res.json(rows);
+    });
+    console.log(query);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
