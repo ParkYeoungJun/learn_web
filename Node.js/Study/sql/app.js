@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var sql = require('./routes/sql');
 
 var app = express();
 
@@ -24,35 +25,37 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/sql', sql);
 
-var mysql = require('mysql');
+// var mysql = require('mysql');
 
-var connection = mysql.createConnection({
-    host    :'localhost',
-    port : 3307,
-    user : 'root',
-    password : 'subin931',
-    database:'nodejs_study'
-});
+// var connection = mysql.createConnection({
+//     host    :'localhost',
+//     port : 3307,
+//     user : 'root',
+//     password : 'subin931',
+//     database:'nodejs_study'
+// });
 
-connection.connect(function(err) {
-    if (err) {
-        console.error('mysql connection error');
-        console.error(err);
-        throw err;
-    }
-});
+// app.get('/sql', function(req,res){
 
+//     connection.connect(function(err) {
+//     if (err) {
+//         console.error('mysql connection error');
+//         console.error(err);
+//         throw err;
+//     }
+//     });
 
-app.get('/sql', function(req,res){
-
-    connection.query('select * from test',function(err, result){
+//     connection.query('select * from test',function(err, result){
         
-      console.log(result);
+//       console.log(result);
 
-      res.json(result);
-    });
-});
+//       res.json(result);
+//     });
+
+//     connection.end();
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
