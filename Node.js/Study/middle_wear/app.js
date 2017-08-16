@@ -8,24 +8,6 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-    host    :'localhost',
-    port : 3307,
-    user : 'root',
-    password : 'subin931',
-    database:'nodejs_study'
-});
-
-connection.connect(function(err) {
-    if (err) {
-        console.error('mysql connection error');
-        console.error(err);
-        throw err;
-    }
-});
-
 var app = express();
 
 // view engine setup
@@ -40,13 +22,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.use(function(req, res, next){           // next는 에러처리로만 사용해야함. 에러로 인식
+//   console.log('미들웨어 실행');              // 값을 넘겨주고 싶으면 res.locals.valuename = 'name';
+//   next({type: 'value', key: 'output'});
+// });
+
+// app.use(function(value, req, res, next){    // console.log(res.locals.valuename);
+//   console.log('return value : '+ value.key);
+// });
+
 app.use(function(req, res, next){
-  console.log('미들웨어 실행');
-  next({type: 'value', key: 'output'});
+    console.log('3 parameters');
+    next('error');
 });
 
-app.use(function(value, req, res, next){
-  console.log('return value : '+ value.key);
+app.use(function(inputData, req, res, next){
+    console.log('4 parameters');
+    next();
 });
 
 app.use('/', index);
@@ -55,15 +47,6 @@ app.use('/users', users);
 // app.use(function(req, res){
 //   console.log('미들웨어 실행');
 // });
-
-
-app.get('/sql', function(req,res){
-    var query = connection.query('select * from test',function(err, result){
-        console.log(rows);
-        res.json(rows);
-    });
-    console.log(query);
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
