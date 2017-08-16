@@ -33,11 +33,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
     console.log('3 parameters');
-    next('error');
-});
+    res.locals.val = 'request';
+    next();
+});     // next 사용시 페이지 use를 건너뛰어서 404뜸
 
-app.use(function(inputData, req, res, next){
-    console.log('4 parameters');
+app.set('setvalue', 'hi'); // set 방식의 변수 전달
+
+app.use(function(req, res, next){
+    console.log(res.locals.val);
+    console.log(app.get('setvalue'));
     next();
 });
 
