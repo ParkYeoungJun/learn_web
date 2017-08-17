@@ -9,7 +9,7 @@ var connection = mysql.createConnection(
         user : 'root',
         password : 'subin931',
         database : 'nodejs_study'
-        // connectionLimit: 10
+        connectionLimit: 10
     }
 );
 
