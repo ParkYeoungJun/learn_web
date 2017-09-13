@@ -1,15 +1,15 @@
-var example = function(){
-    setTimeout(function(){
-        setTimeout(function(){
-            console.log('1');
-            setTimeout(function(){
-                console.log('2');
-                setTimeout(function(){
-                    console.log('3');
-                },2000);
-            },1000);
-        },2000);
-    },1000);
+
+var tmp = 0;
+function add(one){
+    var o = one;
+
+    return function(two){
+        o += two;
+        return o;
+    }
 }
 
-example();
+var a1 = add(6);
+
+console.log(a1(5));
+console.log(a1(5));

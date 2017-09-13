@@ -14,22 +14,22 @@
 
 
  
-function async1 (param){
-    return Promise.resolve(param*2);
-}
-function async2 (param){
-    return Promise.resolve(param*2);
-}
-function async3 (param){
-    return Promise.resolve(param*2);
-}
+// function async1 (param){
+//     return Promise.resolve(param*2);
+// }
+// function async2 (param){
+//     return Promise.resolve(param*2);
+// }
+// function async3 (param){
+//     return Promise.resolve(param*2);
+// }
 
-async1(2)
-.then(async2)
-.then(async3)
-.then(function(result){
-    console.log(result);
-});
+// async1(2)
+// .then(async2)
+// .then(async3)
+// .then(function(result){
+//     console.log(result);
+// });
 
 
 // function pAsync1(param){
@@ -48,10 +48,10 @@ async1(2)
 //     });
 // }
 
-function myReject()
-{
-    console.log("Rejected");
-}
+// function myReject()
+// {
+//     console.log("Rejected");
+// }
 
 // pAsync1(2)
 // .then(pAsync2)
@@ -86,9 +86,32 @@ function myReject()
 
 
 // var _promise = new Promise( function(func){
-//     func(new Date());
+//     setTimeout(func(new Date()), 1000);
 // });
 
 // _promise.then(console.log);
 // _promise.then(console.log);
 // _promise.then(console.log);
+
+
+// var p1 = new Promise(function(resolve, reject) {
+//     setTimeout(resolve, 500, "one");
+// });
+// var p2 = new Promise(function(resolve, reject) {
+//     setTimeout(resolve, 100, "two");
+// });
+
+// Promise.race([p1, p2]).then(function(value) {
+//   console.log(value); // "two"
+// });
+
+
+// function promise(func){
+//     return new Promise(function(resolve,rejcet){
+//         setTimeout(resolve(func(new Date()),1000));
+//         });
+//     }
+
+// promise(console.log);
+// promise(console.log);
+// promise(console.log);
