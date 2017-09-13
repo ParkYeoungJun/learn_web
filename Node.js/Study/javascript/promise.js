@@ -2,9 +2,9 @@
 // var async2 = function(param, callback) {callback(param*2);}
 // var async3 = function(param, callback) {callback(param*2);}
 
-// async1(2, function(result){                 // result = 4
-//     async2(result, function(result){           // 8
-//         async3(result, function(result){       // 16
+// async1(2, function(result){                 
+//     async2(result, function(result){           
+//         async3(result, function(result){       
 //             console.log(result);
 //         });
 //     });
@@ -75,7 +75,7 @@
 //     setTimeout(function(){
 //         console.log("2 complete");
 //         resolve(2);
-//     }, 100);
+//     }, 1000);
 // });
 
 // Promise
